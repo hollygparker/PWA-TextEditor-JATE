@@ -22,7 +22,20 @@ const initdb = async () =>
     const result = await request;
     console.log('data saved to the database successfully!', result.value);
   };
-// TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error('getDb not implemented');
 
+
+// Method that gets content from the IndexedDB database using the store and transaction from idb
+export const getDb = async () => {
+  console.log('GET from the database');
+  const jateDb = await openDB('jate', 1);
+  const tx = jateDb.transaction('jate', 'readonly');
+  const store = tx.objectStore('jate');
+  const request = store.get(1);
+  const result = await request;
+  result
+    ? console.log('GET data from the database!', result.value)
+    : console.log('data not found in the database!');
+
+
+};
 initdb();
