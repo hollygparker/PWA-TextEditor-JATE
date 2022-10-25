@@ -36,6 +36,7 @@ export const getDb = async () => {
     ? console.log('GET data from the database!', result.value)
     : console.log('data not found in the database!');
 
-
+  // Check if a variable is defined and if it is, return it. See MDN Docs on Optional Chaining (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+  return result?.value;
 };
 initdb();
